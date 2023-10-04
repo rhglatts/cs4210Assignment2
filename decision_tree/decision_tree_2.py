@@ -4,7 +4,7 @@
 # SPECIFICATION: Creates decision trees from csv data and tests them 10 times each to find the 
 # average accuracy of each of them
 # FOR: CS 4210- Assignment #2
-# TIME SPENT: how long it took you to complete the assignment
+# TIME SPENT: 3 hours
 #-----------------------------------------------------------*/
 
 #IMPORTANT NOTE: DO NOT USE ANY ADVANCED PYTHON LIBRARY TO COMPLETE THIS CODE SUCH AS numpy OR pandas. You have to work here only with standard
@@ -14,9 +14,9 @@
 from sklearn import tree
 import csv
 
-dataSets = ['C:\\Users\\Rebecca\\Downloads\\contact_lens_training_1.csv',
-            'C:\\Users\\Rebecca\\Downloads\\contact_lens_training_2.csv',
-            'C:\\Users\\Rebecca\\Downloads\\contact_lens_training_3.csv']
+dataSets = ['contact_lens_training_1.csv',
+            'contact_lens_training_2.csv',
+            'contact_lens_training_3.csv']
 
 for ds in dataSets:
 
@@ -33,7 +33,7 @@ for ds in dataSets:
                 
     #transform the original categorical training features to numbers and add to the 4D array X. For instance Young = 1, Prepresbyopic = 2, Presbyopic = 3
     # so X = [[1, 1, 1, 1], [2, 2, 2, 2], ...]]
-    feature_to_value = { 'Young' : 1, 'Presbyopic' : 2, 'Prepresbyopic' : 3, 
+    feature_to_value = { 'Young' : 1, 'Prepresbyopic' : 2, 'Presbyopic' : 3, 
                      'Myope' : 4, 'Hypermetrope' : 5,
                      'No' : 6, 'Yes' : 7, 
                      'Normal': 8, 'Reduced' : 9}
@@ -62,7 +62,7 @@ for ds in dataSets:
         #read the test data and add this data to dbTest
         #--> add your Python code here
         dbTest = []
-        with open('C:\\Users\\Rebecca\\Downloads\\contact_lens_test.csv', 'r') as csvfile:
+        with open('contact_lens_test.csv', 'r') as csvfile:
             reader = csv.reader(csvfile)
             for j, row in enumerate(reader):
                 if j > 0: #skipping the header
@@ -83,7 +83,6 @@ for ds in dataSets:
         accuracy = correct / 8
         accuracy_list[i] = accuracy
     #find the average of this model during the 10 runs (training and test set)
-    print(accuracy_list)
     average_accuracy = sum(accuracy_list)/10
     #print the average accuracy of this model during the 10 runs (training and test set).
     #your output should be something like that: final accuracy when training on contact_lens_training_1.csv: 0.2
